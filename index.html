@@ -4,6 +4,8 @@
         <title>Pomodoro Clock</title>
 
         <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script type="text/javascript" src="js/timer.js"></script>
+        <script type="text/javascript" src="js/javascript.js" defer></script>
 
     </head>
 
@@ -16,7 +18,7 @@
 
                 <!-- second row -->
                 <div class="decrease-time"></div>
-                <div class="timer">25</div>
+                <div id="session-timer" class="timer">25</div>
                 <div class="increase-time"></div>
             </section>
             <section id="break" class="timer-container">
@@ -24,7 +26,7 @@
 
                 <!-- second row -->
                 <div class="decrease-time"></div>
-                <div class="timer">5</div>
+                <div id="break-timer" class="timer">5</div>
                 <div class="increase-time"></div>
             </section>
 
@@ -36,9 +38,9 @@
                 <div></div>
             </section>
         </main>
-        <script type="text/javascript" src="javascript.js"></script>
+        
     </body>
-
+    
 </html>
 
 
