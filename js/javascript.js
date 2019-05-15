@@ -3,6 +3,13 @@ const breakTimer = new Timer(document.querySelector('#break-timer').parentNode);
 const clock = new Clock(document.querySelector('#clock').parentNode);
 
 
+
+
+
+
+
+
+
 // get the session number, set session to true
 // when play is pressed, start countdown based on session
 // when pause is pressed, pause session countdown
@@ -19,15 +26,18 @@ const clock = new Clock(document.querySelector('#clock').parentNode);
 // play the break if it was session
 
 
-function playPause(e) {
-    if (e.target.className === 'play'){
-        e.target.className = 'pause';
-    } else {
-        e.target.className = 'play';
-    }
-}
+// function playPause(e) {
+//     if (e.target.className === 'play'){
+//         e.target.className = 'pause';
+//     } else {
+//         e.target.className = 'play';
+//     }
+// }
 
-document.querySelector('#play-pause').addEventListener("click", playPause);
+
+// document.getElementById('#session').querySelector('#session').addEventListener("click", playPause);
+
+// document.querySelector('#play-pause').addEventListener("click", playPause);
 document.querySelector('#stop').addEventListener("click", function(){console.log('stop');});
 
 
