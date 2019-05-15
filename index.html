@@ -5,6 +5,7 @@
 
         <link rel="stylesheet" type="text/css" href="css/styles.css">
         <script type="text/javascript" src="js/timer.js"></script>
+        <script type="text/javascript" src="js/clock.js"></script>
         <script type="text/javascript" src="js/javascript.js" defer></script>
 
     </head>
@@ -20,6 +21,9 @@
                 <div class="decrease-time"></div>
                 <div id="session-timer" class="timer">25</div>
                 <div class="increase-time"></div>
+
+                <!-- third row -->
+                <div class="minutes-label">MINUTES</div>
             </section>
             <section id="break" class="timer-container">
                 <div class="timer-title">BREAK</div>
@@ -28,13 +32,16 @@
                 <div class="decrease-time"></div>
                 <div id="break-timer" class="timer">5</div>
                 <div class="increase-time"></div>
+
+                <!-- third row -->
+                <div class="minutes-label">MINUTES</div>
             </section>
 
             <section id="timer-display">
                 <div ></div>
                 <div id="stop"></div>
-                <div id="play-pause"></div>
-                <div id="clock">0:00</div>
+                <div id="play-pause" class="play"></div>
+                <div id="clock">25:00</div>
                 <div></div>
             </section>
         </main>

@@ -33,5 +33,6 @@ class Timer {
 
     displayTime() {
         this.timerText.innerHTML = this.time;
+        document.querySelector('#clock').innerHTML = this.time + ':00';
     }
 }

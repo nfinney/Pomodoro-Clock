@@ -35,6 +35,7 @@ main {
     display: flex;
     font-size: 15px;
     justify-content: center;
+    letter-spacing: 4px;
     text-transform: uppercase;
     vertical-align: middle;
 }
@@ -47,16 +48,16 @@ main {
     border-top: 1px solid #7cba7e;  
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 25% 1fr;
+    grid-template-rows: 25% 1fr 10%;
     border-bottom: 2px solid #64a568;
     border-top: 1px solid #7cba7e;   
 }
 .timer-title {    
     color: #1d4a20;
     font-size: 20px;
-    grid-column: 1 / 4;    
+    grid-column: 1 / 4; 
+    line-height: 75px;   
     text-transform: uppercase;
-    line-height: 75px;
 }
 .timer {
     align-items: center;
@@ -79,6 +80,14 @@ main {
 }
 .decrease-time:hover, .increase-time:hover {
     background: url("../images/arrow_over.png") no-repeat center;
+}
+.minutes-label {
+    color: #fbfffc;
+    font-size: 12px;
+    grid-column: 1 / 4;    
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-top: -15px;
 }
 /* // END - TIMER CONTAINER  */
 
@@ -107,10 +116,17 @@ main {
     margin: 0 10px 0 0;
 }
 #play-pause {
+    cursor: pointer;
+}
+.pause {
+    background-image: url("../images/pause.png");
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+.play {
     background-image: url("../images/play.png");
     background-repeat: no-repeat;
     background-position: center; 
-    cursor: pointer;
 }
 #clock {
     justify-self: end;
