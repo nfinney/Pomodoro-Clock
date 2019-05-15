@@ -9,12 +9,20 @@ class Timer {
         this.decreaseButton = node.querySelector('.decrease-time');
 
         // event listeners
-        this.increaseButton.addEventListener("click", evt => this.increaseTime(evt));
-        this.decreaseButton.addEventListener("click", evt => this.decreaseTime(evt));
+        this.increaseButton.addEventListener("click", evt => this.canChangeTime(evt));
+        this.decreaseButton.addEventListener("click", evt => this.canChangeTime(evt));
         
     }
 
-    increaseTime(e) {
+    canChangeTime(e){
+        if(global_CanChangeTime && e.target.className == 'increase-time'){
+            this.increaseTime();
+        } else if(global_CanChangeTime && e.target.className == 'decrease-time') {
+            this.decreaseTime();
+        }
+    }
+
+    increaseTime() {
         if(this.time >= 30) {
             this.time = 30;
         } else {
@@ -22,9 +30,9 @@ class Timer {
         }
         this.displayTime();
     }
-    decreaseTime(e) {
-        if(this.time <= 0) {
-            this.time = 0;
+    decreaseTime() {
+        if(this.time <= 1) {
+            this.time = 1;
         } else {
             this.time -= 1;
         }
@@ -33,6 +41,5 @@ class Timer {
 
     displayTime() {
         this.timerText.innerHTML = this.time;
-        // document.querySelector('#clock').innerHTML = this.time + ':00';
     }
 }

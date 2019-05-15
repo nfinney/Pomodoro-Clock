@@ -6,10 +6,11 @@ class Clock {
         this.clockDisplay = document.querySelector('#clock');
         this.playPauseButton = document.querySelector('#play-pause');
         this.stopButton = document.querySelector('#stop');
-        this.timer;
+        this.timer = null;
         this.isPaused = true;
         this.hasPlayed = false;
         this.isSession = true;
+        this.numberOfSessions = 0;
         const sessionID = document.querySelector('#session');
         
         // event listeners
@@ -21,7 +22,9 @@ class Clock {
 
     // adjusts clock display when time increased or decreased
     adjustClock(e) {
-        this.clockDisplay.innerHTML = sessionTimer.time + ":00";
+        if(global_CanChangeTime){
+            this.clockDisplay.innerHTML = sessionTimer.time + ":00";
+        }        
     }
 
     // changes the play button to pause and pause button to play
@@ -40,42 +43,56 @@ class Clock {
     }
 
     startTimer(e) {
-        let timer;
+
+        global_CanChangeTime = false;
         
         if(this.timer == null) {
-            this.timer = 5; // multiply by 60 for production
+            this.timer = sessionTimer.time * 60; // multiply by 60 for production
         }
         let minutes, seconds;
         let clockDisplay = this.clockDisplay;
 
         if(!this.isPaused){
+            
             this.intervalID = setInterval(() => {
+                
                 minutes = parseInt(this.timer / 60, 10);
                 seconds = parseInt(this.timer % 60, 10);
 
-                minutes = minutes < 10 ? "0" + minutes : minutes;
+                minutes = minutes < 10 ? minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 clockDisplay.innerHTML = minutes + ":" + seconds;
-                // this.timer = timer;
-                // console.log(this.timer);
+                
                 if (--this.timer < 0) {
-                    this.timer = 0;
+                    this.startNextTimer();
                 }
             }, 1000);
         }        
     }
 
     pauseTimer(e) {
-        console.log(this.timer);
         clearInterval(this.intervalID);
     }
 
     stopTimer(e) {
+        global_CanChangeTime = true;
         this.timer = null;
         this.isPaused = true;
         this.playPauseButton.className = 'play';
         this.adjustClock();
         clearInterval(this.intervalID);
     }
+
+    startNextTimer() {
+        if(this.isSession) {
+            this.isSession = false;
+            this.timer = breakTimer.time * 60; // multiply by 60 for production
+            this.numberOfSessions++;            
+        } else {
+            this.isSession = true;
+            this.timer = sessionTimer.time * 60; // multiply by 60 for production
+        }
+    }
+
 }
